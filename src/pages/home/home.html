@@ -7,10 +7,20 @@
 </ion-header>
 
 <ion-content padding class="home-content">
-  <ion-buttons>
-    <button ion-button>TODO PAGE</button>
-  </ion-buttons>
-  <ion-buttons>
-    <button ion-button (click)="goToWeatherPage($event)">Weather Page</button>
-  </ion-buttons>
+  <ion-item class="weather" *ngIf="weather">
+    <img src="{{weather.icon}}">
+    <h2 class="title">{{weather.title}}</h2>
+    <p class="temperature">{{weather.temperature}}</p>
+  </ion-item>
+  <form action="" class="weather-search" (submit)="onSubmit($event)">
+    <ion-item>
+      <ion-label color="primary" floating>Enter your location</ion-label>
+      <ion-input name="location" (keyup)="onKeyup($event)" [(ngModel)]="curItem.value"></ion-input>
+    </ion-item>
+  </form>
+  <ion-list>
+    <ion-item *ngFor="let item of items" (click)="onAcItemClick(item)">
+      {{item.value}}
+    </ion-item>
+  </ion-list>
 </ion-content>

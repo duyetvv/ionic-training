@@ -9,17 +9,11 @@ import { NativeGeocoder }from '@ionic-native/native-geocoder';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
-import { AddItemPage } from '../pages/add-item/add-item';
-import { DetailsPage } from '../pages/details/details';
-import { WeatherPage } from '../pages/weather/weather';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage,
-    AddItemPage,
-    DetailsPage,
-    WeatherPage
+    HomePage
   ],
   imports: [
     BrowserModule,
@@ -29,10 +23,7 @@ import { WeatherPage } from '../pages/weather/weather';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage,
-    AddItemPage,
-    DetailsPage,
-    WeatherPage
+    HomePage
   ],
   providers: [
     NativeGeocoder,
