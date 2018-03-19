@@ -12,10 +12,10 @@
     <h2 class="title">{{weather.title}}</h2>
     <p class="temperature">{{weather.temperature}}</p>
   </ion-item>
-  <form action="" class="weather-search" (submit)="onSubmit($event)">
+  <form action="" class="weather-search" (ngSubmit)="onSubmit(searchForm)" #searchForm="ngForm">
     <ion-item>
       <ion-label color="primary" floating>Enter your location</ion-label>
-      <ion-input name="location" (keyup)="onKeyup($event)" [(ngModel)]="curItem.value"></ion-input>
+      <ion-input required name="location" (keyup)="onKeyup($event)" [(ngModel)]="curItem.value"></ion-input>
     </ion-item>
   </form>
   <ion-list>

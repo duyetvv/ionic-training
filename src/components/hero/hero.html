@@ -1,0 +1,12 @@
+<!-- Generated template for the HeroComponent component -->
+<ion-content>
+  <ion-list class="heroes">
+    <ion-item *ngFor="let hero of heroes"
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+
+      <span>{{hero.id}}</span>{{hero.name}}
+    </ion-item>
+  </ion-list>
+  <detail [hero]="selectedHero"></detail>
+</ion-content>

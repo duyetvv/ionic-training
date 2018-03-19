@@ -16,12 +16,23 @@ export class HomePage {
     value: '',
     key: ''
   };
+  tmpObject: any = {};
 
   weather: any = null;
 
   constructor(public navCtrl: NavController, private http: HttpClient) {}
 
-  private ajustData(data) {
+  ionViewDidLoad () {
+    window.setTimeout(() => {
+      this.tmpObject = {
+        key: 'tmpObject',
+        value: 'tmpObject Value'
+      };
+    }, 2000)
+    console.log(this.keyupTimer);
+  }
+
+  private ajustData (data) {
     return data.map((datum) => {
       return {
         value: datum.LocalizedName,
@@ -30,7 +41,7 @@ export class HomePage {
     });
   }
 
-  autocompletePlaces (place:string) {
+  public autocompletePlaces (place:string) {
     this.http
       .get(`http://dataservice.accuweather.com/locations/v1/cities/autocomplete?apikey=BmD6kUa1PMpGrJBc3LrgdotxaEiW5na1&q=${place}`)
       .subscribe((res: any[]) => {
@@ -40,7 +51,7 @@ export class HomePage {
       })
   }
 
-  getCurAccuWeather() {
+  public getCurAccuWeather () {
     if (!this.curItem.key.length) { return };
 
     this.http
@@ -58,7 +69,7 @@ export class HomePage {
       });
   }
 
-  onKeyup (evt) {
+  public onKeyup (evt) {
     window.clearTimeout(this.keyupTimer);
 
     this.keyupTimer = window.setTimeout(() => {
@@ -66,13 +77,13 @@ export class HomePage {
     }, 180);
   }
 
-  onAcItemClick(item) {
+  public onAcItemClick (item) {
     this.curItem = item;
     this.getCurAccuWeather();
     this.items = [];
   }
 
-  onSubmit (evt) {
+  public onSubmit (evt) {
     evt.prevenDefault();
     if (this.weather) {
       return;
