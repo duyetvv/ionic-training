@@ -42,14 +42,14 @@ export class HomePage {
 
   getCurAccuWeather() {
     if (!this.curItem.key.length) { return };
-    
+
     this.http
       .get(`http://dataservice.accuweather.com/currentconditions/v1/${this.curItem.key}?apikey=BmD6kUa1PMpGrJBc3LrgdotxaEiW5na1`)
       .subscribe((res: any[]) => {
         let datum = res[0];
 
         this.weather = {
-          icon: `/assets/icon/${datum.WeatherIcon}-s.png`,
+          icon: `/assets/icon/${datum.WeatherIcon}.png`,
           title: datum.WeatherText,
           temperature: datum.Temperature.Metric.Value
         };
@@ -68,8 +68,8 @@ export class HomePage {
 
   onAcItemClick(item) {
     this.curItem = item;
-    console.log(item);
     this.getCurAccuWeather();
+    this.items = [];
   }
 
   onSubmit (evt) {
